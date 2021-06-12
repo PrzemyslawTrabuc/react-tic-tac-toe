@@ -149,7 +149,7 @@ function Square(props) {
           </div>
           </div>
           <div className="winner">{winner_message}</div>
-          <p>{this.renderResetButton()}</p>
+          <div id="reset_button_div">{this.renderResetButton()}</div>
         </div>
       );
     }
