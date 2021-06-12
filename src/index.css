@@ -144,3 +144,10 @@ body
   {
     color:yellowgreen;
   }  
+
+  @media screen and (max-width: 100px) {
+    .winner, .status
+    {
+      font-size: 50px;   
+    }
+  }
