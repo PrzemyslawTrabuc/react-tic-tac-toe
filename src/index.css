@@ -160,7 +160,7 @@ will-change:auto;
   @media screen and (max-width:700px) {
     .winner, .status, .square, .resetButton
     {
-      font-size:25px;
+      font-size:26px;
     }
     .square
     {
