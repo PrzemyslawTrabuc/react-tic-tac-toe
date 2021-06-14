@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function Square(props) {   
+function Square(props) {  
       return (        
-        <button className="square" onClick={props.onClick}>
-          {props.symbol}
+        <button className={'square '+ props.slot_flag} onClick={props.onClick}>
+          {props.symbol}  
         </button>
-      );
-   
+      ); 
   }
+
   function ResetButton(props) {   
     return (        
       <button className="resetButton" onClick={props.onClick}>
@@ -20,6 +20,7 @@ function Square(props) {
 }
 
   class Board extends React.Component {    
+    var 
     constructor(props)
     {   
       var table = [];
@@ -77,14 +78,27 @@ function Square(props) {
           });   
       }       
     }
-    renderSquare(i) {  
-      var stored_slots = JSON.parse(window.sessionStorage.getItem("table"));
-      return(         
-      <Square 
-      symbol={stored_slots[i]} 
+    renderSquare(i) { 
+      var flag=""; 
+      var win_slots = Show_win_slots(this.state.slots);      
+      var stored_slots = JSON.parse(window.sessionStorage.getItem("table")); 
+      if(win_slots!==null){
+      if(i===win_slots[0] || i=== win_slots[1] ||i=== win_slots[2])
+      {
+        flag='win';      
+      }else
+      {
+        flag='neutral';
+      }  
+    }      
+      return(        
+      <Square className={'bob'}
+      slot_flag={flag}
+      symbol={stored_slots[i]}
       onClick={() => this.handleClick(i)}      
       />
       );
+      
     }
     renderResetButton() {
       if(Find_Winner(this.state.slots) !== null || !this.state.slots.includes(null))
@@ -99,12 +113,13 @@ function Square(props) {
     }
   
     render() 
-    {  
+    {      
       window.sessionStorage.setItem('table',JSON.stringify(this.state.slots));     
       let Next_player = 'Next player: X';      
-      const winner = Find_Winner(this.state.slots);
-      let winner_message = null;
-      let table = this.state.slots;     
+      const winner = Find_Winner(this.state.slots);       
+      let winner_message = null;    
+      let table = this.state.slots;    
+     
       if(this.state.Player_X_is_next===true)
       {
       Next_player = 'Next Player: X';
@@ -118,6 +133,8 @@ function Square(props) {
         {
           if(winner !== null)
           { 
+          var win_slots = Show_win_slots(this.state.slots);                
+          console.log(win_slots[i]);
           Next_player = 'GAME OVER!!!';
           winner_message = 'The Winner is: Player ' + winner;               
           }else if(!this.state.slots.includes(null))
@@ -194,8 +211,28 @@ function Square(props) {
       ];
       for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
-        if (slots[a] && slots[a] === slots[b] && slots[a] === slots[c]) {          
+        if (slots[a] && slots[a] === slots[b] && slots[a] === slots[c]) {   
           return slots[a];
+        }
+      }
+      return null;
+    }
+    function Show_win_slots(slots)
+    {
+      const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+      for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (slots[a] && slots[a] === slots[b] && slots[a] === slots[c]) { 
+          return lines[i];
         }
       }
       return null;

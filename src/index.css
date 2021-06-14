@@ -1,18 +1,26 @@
 @font-face 
-{
+  {
   font-family: "Gaming";
   src: local("PressStart2P Regular"),
   local("PressStart2P-Regular"),
   url(PressStart2P-Regular.ttf); 
   }
-  @keyframes blinking_text
+  @keyframes blinking
   {
     0%{     visibility: visible;    }
     49%{    visibility: visible;   }
     60%{    visibility: hidden;  }
     99%{    visibility: hidden;    }
     100%{   visibility: visible;    }
-}
+  }
+  @keyframes blinking_text
+  {
+    0%{     color: whitesmoke ;    }
+    49%{    color:rgb(142, 211, 115) ;   }
+    60%{    color: yellowgreen;  }
+    99%{    color: yellowgreen;    }
+    100%{   color:rgb(142, 211, 115) ;    }
+  }
 
 body
  {    
@@ -76,6 +84,7 @@ body
     -4px 0 0 #df4a42,
     2px 0 0 #91fcfe,
     4px 0 0 #4405fc;   
+    will-change:auto;  
   }
   .square:active {
     background-color: yellowgreen;
@@ -84,15 +93,22 @@ body
     2px 2px 2px #91fcfe,
     3px 3px 2px #4405fc;
     transform: translateY(2px);    
+    will-change:auto;  
   }
   .square:focus{    
-    transition: ease-in 0.2s;
-    
+    -webkit-transition: 200ms ease-in;
+-moz-transition: 200ms ease-in;
+-o-transition: 200ms ease-in;
+transition: 200ms ease-in;
+transform: translateZ(0);
+-webkit-transform: translateZ(0);
+will-change:auto;  
  } 
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }  
-
+ .win
+ {
+  animation:blinking_text 1s infinite;  
+ }
+ 
   #board
   {    
     width:100%;        
@@ -112,7 +128,7 @@ body
     4px 0 0 #4405fc;
     margin-top:5%;    
     width:100%; 
-    animation:blinking_text 0.9s infinite;
+    animation:blinking 0.9s infinite;
     margin-bottom:5%
   }  
   
