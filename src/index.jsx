@@ -133,7 +133,7 @@ function Square(props) {
         {
           if(winner !== null)
           { 
-          var win_slots = Show_win_slots(this.state.slots);                
+          //var win_slots = Show_win_slots(this.state.slots);                
           //console.log(win_slots[i]);
           Next_player = 'GAME OVER!!!';
           winner_message = 'The Winner is: Player ' + winner;               
@@ -174,7 +174,7 @@ function Square(props) {
   
   class Game extends React.Component {  
     render() {     
-      var stored_slots = JSON.parse(window.sessionStorage.getItem("table")); 
+      //var stored_slots = JSON.parse(window.sessionStorage.getItem("table")); 
       //console.log(stored_slots);    
       return (
         <div className="game">
