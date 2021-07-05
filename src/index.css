@@ -15,11 +15,11 @@
   }
   @keyframes blinking_text
   {
-    0%{     color: whitesmoke ;    }
-    49%{    color:rgb(142, 211, 115) ;   }
-    60%{    color: yellowgreen;  }
-    99%{    color: yellowgreen;    }
-    100%{   color:rgb(142, 211, 115) ;    }
+    0%{     color: yellowgreen ;    }
+    49%{    color: yellowgreen;    }  
+    60%{    color: whitesmoke;  }
+    99%{    color: whitesmoke;    }
+    100%{   color: yellowgreen;    }  
   }
 
 body
@@ -106,7 +106,7 @@ will-change:auto;
  } 
  .win
  {
-  animation:blinking_text 1s infinite;  
+  animation:blinking_text 0.9s infinite;  
  }
  
   #board
