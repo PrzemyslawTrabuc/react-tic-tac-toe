@@ -18,6 +18,14 @@ function Square(props) {
     );
  
 }
+function Winner(props) {   
+  return (        
+    <div className="winner">
+      {props.winnerPlayer}
+    </div>
+  );
+
+}
 
   class Board extends React.Component {    
     var 
@@ -100,6 +108,7 @@ function Square(props) {
       );
       
     }
+
     renderResetButton() {
       if(Find_Winner(this.state.slots) !== null || !this.state.slots.includes(null))
       {         
@@ -111,15 +120,28 @@ function Square(props) {
       }
       else{return;}
     }
+
+    renderWinnerText() {
+      window.sessionStorage.setItem('table',JSON.stringify(this.state.slots));    
+      if(Find_Winner(this.state.slots) !== null || !this.state.slots.includes(null))
+      {   
+        const winner = Find_Winner(this.state.slots);       
+        let winner_message = "Draw";    
+        if(winner)
+        winner_message = 'The Winner is: Player ' + winner;    
+      return( 
+      <Winner className='winner'   
+      winnerPlayer = {winner_message}
+      ></Winner>
+      );
+      }
+      else{return;}
+    }
   
     render() 
     {      
       window.sessionStorage.setItem('table',JSON.stringify(this.state.slots));     
-      let Next_player = 'Next player: X';      
-      const winner = Find_Winner(this.state.slots);       
-      let winner_message = null;    
-      let table = this.state.slots;    
-     
+      let Next_player = 'Next player: X';
       if(this.state.Player_X_is_next===true)
       {
       Next_player = 'Next Player: X';
@@ -127,23 +149,7 @@ function Square(props) {
       {
       Next_player = 'Next Player: O';
       } 
-      for(let i = 0; i < 9; i++)
-      {
-        if(table!==null)
-        {
-          if(winner !== null)
-          { 
-          //var win_slots = Show_win_slots(this.state.slots);                
-          //console.log(win_slots[i]);
-          Next_player = 'GAME OVER!!!';
-          winner_message = 'The Winner is: Player ' + winner;               
-          }else if(!this.state.slots.includes(null))
-          {
-            Next_player = 'GAME OVER!!!';
-            winner_message = 'DRAW'
-          }           
-        }
-      }     
+     
       window.sessionStorage.setItem('nextPlayer',this.state.Player_X_is_next);   
       return (
         <div id="main">
@@ -164,8 +170,8 @@ function Square(props) {
             {this.renderSquare(7)}
             {this.renderSquare(8)}
           </div>
-          </div>
-          <div className="winner">{winner_message}</div>
+          </div>          
+          <div className="winner">{this.renderWinnerText()}</div>         
           <div id="reset_button_div">{this.renderResetButton()}</div>
         </div>
       );
