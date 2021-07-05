@@ -144,13 +144,25 @@ function Winner(props) {
       let Next_player = 'Next player: X';
       if(this.state.Player_X_is_next===true)
       {
-      Next_player = 'Next Player: X';
+      Next_player = 'Next Player: X';    
       }else
       {
-      Next_player = 'Next Player: O';
+      Next_player = 'Next Player: O'; 
       } 
-     
-      window.sessionStorage.setItem('nextPlayer',this.state.Player_X_is_next);   
+      let winner = Find_Winner(this.state.slots)
+      window.sessionStorage.setItem('nextPlayer',this.state.Player_X_is_next); 
+      var fullBoardFlag=true;  
+      for(let i=0;i<9;i++)
+      {
+        if(this.state.slots[i] === null)
+        {
+          fullBoardFlag=false;
+        }
+      }
+      if(winner !== null || fullBoardFlag === true)
+      {
+        Next_player="GAME OVER!"
+      }
       return (
         <div id="main">
           <div className="status">{Next_player}</div>
