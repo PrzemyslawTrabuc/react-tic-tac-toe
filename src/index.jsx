@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Board from './Board.js';
+import Game from './Game.js';
 
 
-  class Game extends React.Component {  
-    render() {     
-      //var stored_slots = JSON.parse(window.sessionStorage.getItem("table")); 
-      //console.log(stored_slots);    
+  class App extends React.Component {  
+    render() {         
       return (
         <div className="game">
           <div className="game-board">
-            <Board />
+            <Game />
           </div>
           <div className="game-info">
             <div>{/* status */}</div>
@@ -25,7 +23,7 @@ import Board from './Board.js';
   // ========================================
   
   ReactDOM.render(
-    <Game/>,
+    <App />,
     document.getElementById('root')
   );
     
