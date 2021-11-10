@@ -1,5 +1,6 @@
 import React from "react";
 import Board from "./Board.js";
+import clickSound from "./click-sound.wav"
 
 class Game extends React.Component {
   constructor(props) {
@@ -43,6 +44,12 @@ class Game extends React.Component {
       slots[i] = "O";
       this.setState({ slots: slots, Player_X_is_next: true });
     }
+    let audio_click = new Audio(clickSound);
+    audio_click.play().then(() => {
+
+    }).catch(error =>{
+      console.log("Missing sound file")
+    });
   }
 
   renderResetButton() {
@@ -70,7 +77,7 @@ class Game extends React.Component {
       }
       return <Winner className="winner" winnerPlayer={winner_message}></Winner>;
     } else {
-      return;
+      return "";
     }
   }
   //localStorage.setItem("table", '["X","O","X","O","X","O","X","O","X"]')
@@ -83,7 +90,7 @@ class Game extends React.Component {
       Next_player = "Next Player: O";
     }
     window.localStorage.setItem("nextPlayer", this.state.Player_X_is_next);
-    var fullBoardFlag = true;
+    let fullBoardFlag = true;
     for (let i = 0; i < 9; i++) {
       if (this.state.slots[i] === null) {
         fullBoardFlag = false;
@@ -100,6 +107,7 @@ class Game extends React.Component {
         <div className="winner">{this.renderWinnerText()}</div>
         <div id="reset_button_div">{this.renderResetButton()}</div>
       </div>
+
     );
   }
 }
