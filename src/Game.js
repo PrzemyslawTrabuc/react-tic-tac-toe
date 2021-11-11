@@ -4,9 +4,9 @@ import clickSound from "./click-sound.wav"
 
 class Game extends React.Component {
   constructor(props) {
-    var table = [];
+    const table = [];
     if (localStorage.length !== 0) {
-      var stored_slots = JSON.parse(window.localStorage.getItem("table"));
+      const stored_slots = JSON.parse(window.localStorage.getItem("table"));
       for (let i = 0; i < 9; i++) {
         table[i] = stored_slots[i];
       }
@@ -15,13 +15,14 @@ class Game extends React.Component {
         table[i] = null;
       }
     }
-    var nextPlayer = true;
+    let nextPlayer = true;
     if (window.localStorage.getItem("nextPlayer") === "false") {
       nextPlayer = false;
     }
     super(props);
     this.state = { slots: table, Player_X_is_next: nextPlayer };
     this.isMovePossible = true;
+    this.winner = '';
   }
 
   handleResetButton() {
@@ -36,7 +37,7 @@ class Game extends React.Component {
     const slots = this.state.slots.slice();
     if (this.isMovePossible === false) {
       return;
-    }
+    }else
     if (this.state.Player_X_is_next === true && slots[i] === null) {
       slots[i] = "X";
       this.setState({ slots: slots, Player_X_is_next: false });
@@ -44,11 +45,12 @@ class Game extends React.Component {
       slots[i] = "O";
       this.setState({ slots: slots, Player_X_is_next: true });
     }
+
     let audio_click = new Audio(clickSound);
     audio_click.play().then(() => {
 
     }).catch(error =>{
-      console.log("Missing sound file")
+      console.log(error)
     });
   }
 
@@ -58,32 +60,33 @@ class Game extends React.Component {
         <ResetButton
           className="resetButton"
           onClick={() => this.handleResetButton()}
-        ></ResetButton>
+        />
       );
     } else {
-      return;
+      return '';
     }
   }
 
   renderWinnerText() {
-    window.localStorage.setItem("table", JSON.stringify(this.state.slots));
-    const winner = Find_Winner(this.state.slots);
-  
-    if (winner || !this.state.slots.includes(null)) {
+    if (this.winner || !this.state.slots.includes(null)) {
       this.isMovePossible = false;
       let winner_message = "Draw";
-      if(winner){
-        winner_message = "The Winner is: Player " + winner;
+      if(this.winner){
+        winner_message = "The Winner is: Player " + this.winner;
       }
-      return <Winner className="winner" winnerPlayer={winner_message}></Winner>;
+      return <Winner className="winner" winnerPlayer={winner_message} />;
     } else {
-      return "";
+      return null;
     }
   }
-  //localStorage.setItem("table", '["X","O","X","O","X","O","X","O","X"]')
-  render() {
+
+  renderGameStatus(){
     window.localStorage.setItem("table", JSON.stringify(this.state.slots));
-    let Next_player = "Next player: X";
+    this.winner = Find_Winner(this.state.slots);
+    if(this.winner){
+      this.isMovePossible = false;
+    }
+    let Next_player //= "Next player: X";
     if (this.state.Player_X_is_next === true) {
       Next_player = "Next Player: X";
     } else {
@@ -99,10 +102,14 @@ class Game extends React.Component {
     if (this.isMovePossible === false || fullBoardFlag === true) {
       Next_player = "GAME OVER!";
     }
+    return Next_player;
+  }
 
+  render() {
+    console.log(this.isMovePossible)
     return (
       <div id="main">
-        <div className="status">{Next_player}</div>
+        <div className="status">{this.renderGameStatus()}</div>
         <Board symbol={this.props.slots} onClick={(i) => this.handleClick(i)} />
         <div className="winner">{this.renderWinnerText()}</div>
         <div id="reset_button_div">{this.renderResetButton()}</div>
