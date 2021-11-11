@@ -106,7 +106,7 @@ class Game extends React.Component {
   }
 
   render() {
-    console.log(this.isMovePossible)
+
     return (
       <div id="main">
         <div className="status">{this.renderGameStatus()}</div>
