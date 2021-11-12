@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-tic-tac-toe/static/css/main.ddc1c843.chunk.css",
-    "main.js": "/react-tic-tac-toe/static/js/main.f27f8642.chunk.js",
-    "main.js.map": "/react-tic-tac-toe/static/js/main.f27f8642.chunk.js.map",
+    "main.js": "/react-tic-tac-toe/static/js/main.b99d68ab.chunk.js",
+    "main.js.map": "/react-tic-tac-toe/static/js/main.b99d68ab.chunk.js.map",
     "runtime-main.js": "/react-tic-tac-toe/static/js/runtime-main.6caf8fad.js",
     "runtime-main.js.map": "/react-tic-tac-toe/static/js/runtime-main.6caf8fad.js.map",
     "static/js/2.0aac1777.chunk.js": "/react-tic-tac-toe/static/js/2.0aac1777.chunk.js",
@@ -15,12 +15,12 @@
     "static/media/draw-sound.7ebf8a8f.wav": "/react-tic-tac-toe/static/media/draw-sound.7ebf8a8f.wav",
     "static/media/end-sound.492ea39f.wav": "/react-tic-tac-toe/static/media/end-sound.492ea39f.wav",
     "static/media/reset-sound.b222ebf0.wav": "/react-tic-tac-toe/static/media/reset-sound.b222ebf0.wav",
-    "static/media/start-sound.6b00a5f1.wav": "/react-tic-tac-toe/static/media/start-sound.6b00a5f1.wav"
+    "static/media/start-sound.3237a22b.wav": "/react-tic-tac-toe/static/media/start-sound.3237a22b.wav"
   },
   "entrypoints": [
     "static/js/runtime-main.6caf8fad.js",
     "static/js/2.0aac1777.chunk.js",
     "static/css/main.ddc1c843.chunk.css",
-    "static/js/main.f27f8642.chunk.js"
+    "static/js/main.b99d68ab.chunk.js"
   ]
 }
