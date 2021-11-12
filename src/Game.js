@@ -1,6 +1,10 @@
 import React from "react";
 import Board from "./Board.js";
+import startSound from "./start-sound.wav"
 import clickSound from "./click-sound.wav"
+import endSound from "./end-sound.wav"
+import drawSound from "./draw-sound.wav"
+import resetSound from "./reset-sound.wav"
 
 class Game extends React.Component {
   constructor(props) {
@@ -31,6 +35,13 @@ class Game extends React.Component {
     Clear_Board(slots);
     this.setState({ slots: slots /* Player_X_is_next: Next_player */ });
     this.isMovePossible = true;
+    let audio_reset = new Audio(resetSound);
+    audio_reset.play().then(() => {
+
+    }).catch(error =>{
+      console.log(error)
+    });
+
   }
 
   handleClick(i) {
@@ -73,6 +84,21 @@ class Game extends React.Component {
       let winner_message = "Draw";
       if(this.winner){
         winner_message = "The Winner is: Player " + this.winner;
+
+        let audio_end = new Audio(endSound);
+        audio_end.play().then(() => {
+
+        }).catch(error =>{
+          console.log(error)
+        });
+
+      }else {
+        let audio_draw = new Audio(drawSound);
+        audio_draw.play().then(() => {
+
+        }).catch(error => {
+          console.log(error)
+        });
       }
       return <Winner className="winner" winnerPlayer={winner_message} />;
     } else {
@@ -105,6 +131,15 @@ class Game extends React.Component {
     return Next_player;
   }
 
+  componentDidMount() {
+    let audio_start = new Audio(startSound);
+    audio_start.play().then(() => {
+
+    }).catch(error =>{
+      console.log(error)
+    });
+  }
+
   render() {
 
     return (
@@ -133,6 +168,7 @@ function Find_Winner(slots) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (slots[a] && slots[a] === slots[b] && slots[a] === slots[c]) {
+
       return slots[a];
     }
   }
