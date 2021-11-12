@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-tic-tac-toe/static/css/main.ddc1c843.chunk.css",
-    "main.js": "/react-tic-tac-toe/static/js/main.b99d68ab.chunk.js",
-    "main.js.map": "/react-tic-tac-toe/static/js/main.b99d68ab.chunk.js.map",
+    "main.js": "/react-tic-tac-toe/static/js/main.cf6565af.chunk.js",
+    "main.js.map": "/react-tic-tac-toe/static/js/main.cf6565af.chunk.js.map",
     "runtime-main.js": "/react-tic-tac-toe/static/js/runtime-main.6caf8fad.js",
     "runtime-main.js.map": "/react-tic-tac-toe/static/js/runtime-main.6caf8fad.js.map",
     "static/js/2.0aac1777.chunk.js": "/react-tic-tac-toe/static/js/2.0aac1777.chunk.js",
@@ -11,7 +11,7 @@
     "static/css/main.ddc1c843.chunk.css.map": "/react-tic-tac-toe/static/css/main.ddc1c843.chunk.css.map",
     "static/js/2.0aac1777.chunk.js.LICENSE.txt": "/react-tic-tac-toe/static/js/2.0aac1777.chunk.js.LICENSE.txt",
     "static/media/index.css": "/react-tic-tac-toe/static/media/PressStart2P-Regular.5f45b521.ttf",
-    "static/media/click-sound.ae2de8e7.wav": "/react-tic-tac-toe/static/media/click-sound.ae2de8e7.wav",
+    "static/media/click-sound.2eabeac7.wav": "/react-tic-tac-toe/static/media/click-sound.2eabeac7.wav",
     "static/media/draw-sound.7ebf8a8f.wav": "/react-tic-tac-toe/static/media/draw-sound.7ebf8a8f.wav",
     "static/media/end-sound.492ea39f.wav": "/react-tic-tac-toe/static/media/end-sound.492ea39f.wav",
     "static/media/reset-sound.b222ebf0.wav": "/react-tic-tac-toe/static/media/reset-sound.b222ebf0.wav",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.6caf8fad.js",
     "static/js/2.0aac1777.chunk.js",
     "static/css/main.ddc1c843.chunk.css",
-    "static/js/main.b99d68ab.chunk.js"
+    "static/js/main.cf6565af.chunk.js"
   ]
 }
