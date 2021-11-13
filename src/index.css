@@ -29,8 +29,8 @@ body
     #001127 0.9vh,
     #000000 0.2vh,
     #002127 0.6vh
-  );   
-    font-family:'Gaming';    
+  );
+    font-family: 'Gaming', sans-serif;
     color:whitesmoke; 
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -51,7 +51,7 @@ body
   }
   .board-row
   {
-    width:300px;
+    width:20rem;
     margin:auto;
   }
   
@@ -67,18 +67,18 @@ body
   .square {
     border-radius:1px;
     cursor: pointer;
-    font-family:'Gaming';
+    font-family:'Gaming', sans-serif;
     background: transparent;
     border: 3px solid rgba(108, 206, 149,1);   
-    font-size: 50px;
+    font-size: 3.5rem;
     font-weight: bold;  
     float:left;
     margin-right: -2px;
     margin-top: -2px;
     padding: 0;
     text-align: center;
-    width: 100px;
-    height: 100px;   
+    width: 6.7rem;
+    height: 6.7rem;
     color:whitesmoke; 
     text-shadow: -2px 0 0 #fdff2a,
     -4px 0 0 #df4a42,
@@ -116,7 +116,7 @@ will-change:auto;
 
   .winner, .status
   {
-    font-size: 50px;
+    font-size: 4rem;
     width: 100%;   
     text-align: center;
   }
@@ -142,8 +142,8 @@ will-change:auto;
     color:whitesmoke;    
     background-color: transparent;
     border:none;
-    font-size: 50px; 
-    font-family:Gaming;
+    font-size: 4rem;
+    font-family:Gaming, sans-serif;
     text-shadow: -2px 0 0 #fdff2a,
     -4px 0 0 #df4a42,
     2px 0 0 #91fcfe,
@@ -160,21 +160,23 @@ will-change:auto;
   @media screen and (max-width:700px) {
     .winner, .status, .square, .resetButton
     {
-      font-size:26px;
+      font-size:3rem;
     }
     .square
     {
-      width:80px;
-      height: 80px;
+      width:5rem;
+      height: 5rem;
+        font-size:2.5rem;
     }
     .board-row
   {
-    width:240px;
+    width:15rem;
     margin:auto;
   }
   .winner, .status, .resetButton, #board
   {
     margin-top:11vw;
+      font-size:2.5rem;
   }
-    
+
   }
